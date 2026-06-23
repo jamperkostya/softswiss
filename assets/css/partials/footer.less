@@ -1,14 +1,16 @@
 .footer {
 	background: var(--footer-bg-color);
 	padding: 0px 20px 20px 20px;
-	display: grid;
-	row-gap: 20px;
-	justify-content: center;
-	
-	@media (min-width: 768px) and (max-width: 1280px) {
-		grid-template-columns: 1fr 1fr;
-		align-items: center;
+	.container {
+		display: grid;
+		row-gap: 20px;
+		justify-content: center;
+		@media (min-width: 768px) {
+			grid-template-columns: 1fr 1fr;
+			align-items: center;
+		}
 	}
+	
 	.text-center;
 	.buttons {
 		display: flex;
@@ -23,7 +25,7 @@
 		font-size: 14px;
 		line-height: 145%;
 		color: var(--link-color);
-		@media (min-width: 768px) and (max-width: 1280px) {
+		@media (min-width: 768px) {
 			text-align: right;
 		}
 	}

@@ -1,15 +1,27 @@
 .hero-section {
-	@media (min-width: 768px) and (max-width: 1280px) {
+	@media (min-width: 768px) {
 		position: relative;
 		overflow: hidden;
+	}
+	@media (min-width: 1280px) {
+		position: initial;
 	}
 	.hero-section-content {
 		padding: 74px 20px;
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
-		@media (min-width: 768px) and (max-width: 1280px) {
+		@media (min-width: 768px) {
 			max-width: 540px;
+			padding-top: 98px;
+		}
+		@media (min-width: 1280px) {
+			max-width: 1280px;
+			position: relative;
+			h1, .text {
+				max-width: 540px;
+				margin: auto;
+			}
 		}
 	}
 }
@@ -54,6 +66,10 @@
 				margin-right: 15px;
 				display: inline-block;
 			}
+			a {
+				font-size: 14px;
+				line-height: 145%;
+			}
 		}
 	}
 }
@@ -64,8 +80,18 @@ a {
 .bages-container {
 	display: grid;
 	gap: 10px;
-	@media (min-width: 768px) and (max-width: 1280px) {
+	@media (min-width: 768px) and (max-width: 1279px) {
 		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (min-width: 1280px) {
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: repeat(3, 1fr);
+		grid-template-areas:
+		"area-b1 area-b2 area-b2"
+		"area-b1 area-b3 area-b4"
+		"area-b5 area-b6 area-b8"
+		"area-b5 area-b7 area-b8";
+
 	}
 	.bage {
 		background: var(--bage-bg-color);
@@ -74,13 +100,44 @@ a {
 		display: flex;
 		gap: 39px;
 		flex-wrap: wrap;
-		@media (min-width: 768px) and (max-width: 1280px) {
+		align-content: space-between;
+		@media (min-width: 768px) and (max-width: 1279px) {
 			grid-column: span 2;
 			&:nth-child(3),
 			&:nth-child(4),
 			&:nth-child(6),
 			&:nth-child(7) {
 				grid-column: span 1;
+			}
+			&:nth-child(9),
+			&:nth-child(10) {
+				display: none;
+			}
+		}
+		@media (min-width: 1280px) {
+			&:nth-child(1) {
+				grid-area: area-b1;
+			}
+			&:nth-child(2) {
+				grid-area: area-b2;
+			}
+			&:nth-child(3) {
+				grid-area: area-b3;
+			}
+			&:nth-child(4) {
+				grid-area: area-b4;
+			}
+			&:nth-child(5) {
+				grid-area: area-b6;
+			}
+			&:nth-child(6) {
+				grid-area: area-b5;
+			}
+			&:nth-child(7) {
+				grid-area: area-b7;
+			}
+			&:nth-child(8) {
+				grid-area: area-b8;
 			}
 			&:nth-child(9),
 			&:nth-child(10) {
@@ -131,13 +188,13 @@ a {
 	background: var(--content-text-bg-color);
 	padding-top: 74px;
 	padding-bottom: 74px;
-	@media (min-width: 768px) and (max-width: 1280px) {
+	@media (min-width: 768px) and (max-width: 1279px) {
 		padding-top: 104px;
 		padding-bottom: 104px;
 	}
 	.text {
 		margin-top: 20px;
-		@media (min-width: 768px) and (max-width: 1280px) {
+		@media (min-width: 768px) and (max-width: 1279px) {
 			margin: auto;
 			margin-top: 24px;
 			max-width: 540px;
@@ -145,6 +202,11 @@ a {
 		font-size: 16px;
 		line-height: 150%;
 		color: var(--content-text-color);
+		@media (min-width: 768px) {
+			margin: auto;
+			margin-top: 24px;
+			max-width: 540px;
+		}
 	}
 }
 .slider {
@@ -176,6 +238,9 @@ a {
 		margin-bottom: 20px;
 		margin-left: 12px;
 		margin-right: 12px;
+		@media (min-width: 1280px) {
+			grid-template-columns: 1fr 48px 48px;
+		}
 	}
 	.swiper-button-next, .swiper-button-prev {
 		width: 46px;
@@ -189,6 +254,9 @@ a {
 			height: 20px;
 			width: 20px;
 		}
+		@media (min-width: 1280px) {
+			order: 2;
+		}
 	}
 	.swiper-slide {
 		background: var(--slider-slide-bg-color);
@@ -197,7 +265,7 @@ a {
 		display: grid;
 		row-gap: 24px;
 		justify-items: center;
-		@media (min-width: 768px) and (max-width: 1280px) {
+		@media (min-width: 768px) {
 			justify-items: start;
 			text-align: left;
 			gap: 48px;
@@ -211,7 +279,7 @@ a {
 			font-size: 18px;
 			line-height: 130%;
 			color: var(--color-h2);
-			@media (min-width: 768px) and (max-width: 1280px) {
+			@media (min-width: 768px) {
 				justify-content: start;
 			}
 			p {
@@ -238,10 +306,13 @@ a {
 }
 .parallax {
 	display: none;
-	@media (min-width: 768px) and (max-width: 1280px) {
+	@media (min-width: 768px) {
 		will-change: transform;
 		display: block;
 		position: absolute;
+		bottom: 0;
+	}
+	@media (min-width: 768px) and (max-width: 1279px) {
 		width: 284px;
 		bottom: 0;
 		&.left {
@@ -251,6 +322,17 @@ a {
 		&.right {
 			bottom: -60px;
 			right: -40px;
+		}
+	}
+	@media (min-width: 1280px) {
+		width: 360px;
+		&.left {
+			left: -30px;
+			bottom: -110px;
+		}
+		&.right {
+			right: -30px;
+			bottom: -120px;
 		}
 	}
 }
