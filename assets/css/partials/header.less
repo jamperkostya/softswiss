@@ -1,0 +1,50 @@
+.hero-section {
+	background: var(--hero-bg-color);
+	&-header {
+		background: var(--header-bg-color);
+		display: flex;
+		padding: 20px;
+		justify-content: space-between;
+		align-items: center;
+		z-index: 7;
+		position: relative;
+		.logotype {
+			width: 150px;
+			height: 30px;
+			svg {
+				display: block;
+			}
+		}
+		.menu {
+			z-index: 1;
+			position: absolute;
+			background: red;
+			width: 100%;
+			left: 0;
+			top: 88px;
+			padding: 20px;
+			/* Прячем меню вверх за пределы экрана */
+			transform: translateY(-100%);
+			transition: transform 0.4s ease, opacity 0.4s ease;
+			opacity: 0;
+			visibility: hidden;
+			a {
+				.text-center;
+				display: block;
+			}
+			&.active {
+				transform: translateY(0);
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+		.buttons {
+			display: flex;
+			gap: 10px;
+		}
+	}
+}
+
+@media (min-width: 375px) {
+	
+}
