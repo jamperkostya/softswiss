@@ -1,5 +1,9 @@
 .hero-section {
 	background: var(--hero-bg-color);
+	@media (min-width: 768px) {
+		padding-top: 10px;
+		padding-bottom: 166px;
+	}
 	&-header {
 		background: var(--header-bg-color);
 		display: flex;
@@ -8,6 +12,11 @@
 		align-items: center;
 		z-index: 7;
 		position: relative;
+		@media (min-width: 768px) and (max-width: 1280px) {
+			margin-left: 20px;
+			margin-right: 20px;
+			border-radius: 16px;
+		}
 		.logotype {
 			width: 150px;
 			height: 30px;
@@ -41,10 +50,11 @@
 		.buttons {
 			display: flex;
 			gap: 10px;
+			.btn-menu {
+				@media (min-width: 768px) and (max-width: 1280px) {
+					display: none;
+				}
+			}
 		}
 	}
-}
-
-@media (min-width: 375px) {
-	
 }

@@ -16,6 +16,14 @@
 	<body>
 		<section class="hero-section">
 			<header class="hero-section-header">
+				<a href="#" class="btn btn-menu btn-menu-tablet">
+					<div>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<div>menu</div>
+				</a>
 				<a href="#" class="logotype">
 					<svg width="150" height="30" viewBox="0 0 150 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M71.8099 4.82944C70.5646 3.63747 68.9485 3.02824 66.9349 3.02824C64.9214 3.02824 63.3052 3.66396 62.0335 4.90891C60.7882 6.15385 60.1523 7.71666 60.1523 9.59733C60.1523 11.5839 60.7882 13.1732 62.0335 14.3917C63.3052 15.5837 64.9214 16.1929 66.9084 16.1929C68.869 16.1929 70.4852 15.5837 71.7569 14.3387C72.3928 13.7295 72.8962 13.0143 73.2141 12.2196C73.532 11.425 73.691 10.5509 73.691 9.59733C73.7175 7.61071 73.0817 6.02141 71.8099 4.82944ZM69.7434 12.511C69.0545 13.2527 68.1272 13.6235 66.9084 13.6235C65.8486 13.6235 64.8684 13.2527 64.1265 12.4845C63.3847 11.6899 63.0668 10.7363 63.0668 9.59733C63.0668 8.43184 63.4377 7.45178 64.153 6.71011C64.8684 5.96844 65.7956 5.5976 66.9084 5.5976C67.9682 5.5976 68.8955 5.96844 69.6374 6.71011C70.3792 7.45178 70.7236 8.40535 70.7236 9.59733C70.7501 10.7628 70.4322 11.7429 69.7434 12.511Z" fill="#1D1D1B"/>
@@ -57,6 +65,19 @@
 					<a href="#">Menu item</a>
 				</nav>
 				<aside class="buttons">
+					<a href="#" class="btn theme-switcher" id="theme-switcher">
+						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<g clip-path="url(#clip0_23_12542)">
+						<circle cx="10" cy="10" r="7.5" transform="rotate(-180 10 10)" stroke="#1D1D1B" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M10 2.5C10.9849 2.5 11.9602 2.694 12.8701 3.07091C13.7801 3.44782 14.6069 4.00026 15.3033 4.6967C15.9997 5.39314 16.5522 6.21994 16.9291 7.12988C17.306 8.03982 17.5 9.01509 17.5 10C17.5 10.9849 17.306 11.9602 16.9291 12.8701C16.5522 13.7801 15.9997 14.6069 15.3033 15.3033C14.6069 15.9997 13.7801 16.5522 12.8701 16.9291C11.9602 17.306 10.9849 17.5 10 17.5L10 10L10 2.5Z" fill="#1D1D1B"/>
+						</g>
+						<defs>
+						<clipPath id="clip0_23_12542">
+						<rect width="20" height="20" fill="white" transform="translate(20 20) rotate(-180)"/>
+						</clipPath>
+						</defs>
+						</svg>
+					</a>
 					<a href="#" class="btn btn-contacts">
 						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<rect x="1.6665" y="3.33203" width="16.6667" height="13.3333" rx="3.33333" stroke="white" stroke-width="1.33333"/>
@@ -78,6 +99,9 @@
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
 					</p>
 				</div>
+				
+				<img src="assets/images/left-hero_2x.png" data-speed="0.2" class="left parallax" alt="">
+				<img src="assets/images/right-hero_2x.png" data-speed="-0.2" class="right parallax" alt="">
 			</article>
 		</section>
 		<div class="breadcrumb-container container">
@@ -335,6 +359,13 @@
 						updateSliderCounter(this);
 					},
 				},
+				breakpoints: {
+					// если ширина экрана >= 768px
+					768: {
+						slidesPerView: 2,
+						spaceBetween: 30 // отступ между слайдами на десктопе
+					}
+				},
 			});
 			function updateSliderCounter(swiperInstance) {
 				const currentEl = document.getElementById('current-slide');
@@ -371,6 +402,46 @@
 						});
 					});
 				}
+			});
+			document.addEventListener('DOMContentLoaded', () => {
+				const parallaxItems = document.querySelectorAll('.parallax');
+			
+				// Функция, которая запускает параллакс
+				function handleParallax() {
+					const scrollPosition = window.scrollY;
+					const windowWidth = window.innerWidth;
+			
+					// Включаем логику только в рамках вашего медиа-запроса
+					if (windowWidth >= 768 && windowWidth <= 1280) {
+						
+						parallaxItems.forEach(item => {
+							// Получаем скорость из data-атрибута, если его нет — ставим 0.1 по умолчанию
+							const speed = parseFloat(item.getAttribute('data-speed')) || 0.1;
+							
+							// Считаем сдвиг
+							const yPos = scrollPosition * speed;
+			
+							// Двигаем элемент через requestAnimationFrame
+							window.requestAnimationFrame(() => {
+								item.style.transform = `translateY(${yPos}px)`;
+							});
+						});
+			
+					} else {
+						// Если экран стал меньше 768 или больше 1280, сбрасываем трансформацию в ноль
+						parallaxItems.forEach(item => {
+							window.requestAnimationFrame(() => {
+								item.style.transform = 'translateY(0px)';
+							});
+						});
+					}
+				}
+			
+				// Слушаем скролл
+				window.addEventListener('scroll', handleParallax);
+				
+				// Слушаем изменение размеров экрана (на случай, если перевернули планшет)
+				window.addEventListener('resize', handleParallax);
 			});
 		  </script>
 	</body>

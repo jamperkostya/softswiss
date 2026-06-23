@@ -1,9 +1,16 @@
 .hero-section {
+	@media (min-width: 768px) and (max-width: 1280px) {
+		position: relative;
+		overflow: hidden;
+	}
 	.hero-section-content {
 		padding: 74px 20px;
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
+		@media (min-width: 768px) and (max-width: 1280px) {
+			max-width: 540px;
+		}
 	}
 }
 .breadcrumb-container {
@@ -57,6 +64,9 @@ a {
 .bages-container {
 	display: grid;
 	gap: 10px;
+	@media (min-width: 768px) and (max-width: 1280px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
 	.bage {
 		background: var(--bage-bg-color);
 		border-radius: 20px;
@@ -64,6 +74,19 @@ a {
 		display: flex;
 		gap: 39px;
 		flex-wrap: wrap;
+		@media (min-width: 768px) and (max-width: 1280px) {
+			grid-column: span 2;
+			&:nth-child(3),
+			&:nth-child(4),
+			&:nth-child(6),
+			&:nth-child(7) {
+				grid-column: span 1;
+			}
+			&:nth-child(9),
+			&:nth-child(10) {
+				display: none;
+			}
+		}
 		.bage-top, header {
 			width: 100%;
 			flex-shrink: 0;
@@ -108,8 +131,17 @@ a {
 	background: var(--content-text-bg-color);
 	padding-top: 74px;
 	padding-bottom: 74px;
+	@media (min-width: 768px) and (max-width: 1280px) {
+		padding-top: 104px;
+		padding-bottom: 104px;
+	}
 	.text {
 		margin-top: 20px;
+		@media (min-width: 768px) and (max-width: 1280px) {
+			margin: auto;
+			margin-top: 24px;
+			max-width: 540px;
+		}
 		font-size: 16px;
 		line-height: 150%;
 		color: var(--content-text-color);
@@ -130,7 +162,7 @@ a {
 		overflow: hidden;
 		position: relative !important;
 		.swiper-pagination-progressbar-fill {
-			background: #E30613;
+			background: var(--hero-bg-color);
 			border-radius: 999px;
 		}
 	}
@@ -165,6 +197,11 @@ a {
 		display: grid;
 		row-gap: 24px;
 		justify-items: center;
+		@media (min-width: 768px) and (max-width: 1280px) {
+			justify-items: start;
+			text-align: left;
+			gap: 48px;
+		}
 		.slide-content {
 			display: flex;
 			gap: 10px;
@@ -174,6 +211,9 @@ a {
 			font-size: 18px;
 			line-height: 130%;
 			color: var(--color-h2);
+			@media (min-width: 768px) and (max-width: 1280px) {
+				justify-content: start;
+			}
 			p {
 				font-family: 'Sofia Pro';
 				width: 100%;
@@ -193,6 +233,24 @@ a {
 			line-height: 145%;
 			color: var(--hero-bg-color);
 			font-family: 'Sofia Pro SemiBold';
+		}
+	}
+}
+.parallax {
+	display: none;
+	@media (min-width: 768px) and (max-width: 1280px) {
+		will-change: transform;
+		display: block;
+		position: absolute;
+		width: 284px;
+		bottom: 0;
+		&.left {
+			bottom: -60px;
+			left: -40px;
+		}
+		&.right {
+			bottom: -60px;
+			right: -40px;
 		}
 	}
 }

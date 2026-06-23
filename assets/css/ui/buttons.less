@@ -41,3 +41,38 @@
 	width: auto;
 	padding: 14px 24px;
 }
+.btn-menu-tablet {
+	display: none;
+}
+.theme-switcher {
+	display: none;
+}
+@media (min-width: 768px) and (max-width: 1280px) {
+	.btn-menu-tablet {
+		display: grid;
+		grid-template-columns: 20px 1fr;
+		width: auto;
+		padding: 14px;
+		gap: 10px;
+		div {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+			justify-content: center;
+			align-items: center;
+			background: var(--btn-menu-bg-color);
+			border: none;
+			flex-shrink: 0;
+			font-size: 14px;
+			line-height: 145%;
+			color: var(--color-h2);
+		}
+	}
+	.theme-switcher {
+		background: var(--btn-menu-bg-color);
+		border: none;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+	}
+}
